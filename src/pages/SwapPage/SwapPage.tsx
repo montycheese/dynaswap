@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from "react";
 import {DynamicWidget, useDynamicContext} from "@dynamic-labs/sdk-react-core";
 import { SwapWidget } from '@uniswap/widgets';
-//import '@uniswap/widgets/fonts.css'
+import '@uniswap/widgets/fonts.css'
 
 import {base} from 'viem/chains';
 
@@ -32,8 +32,10 @@ export const SwapPage: FC = () => {
             <DynamicWidget/>
             <div>View balance</div>
             <SwapWidget
+                brandedFooter={false}
                 provider={provider}
                 jsonRpcUrlMap={jsonRpcMap}
+                routerUrl={'https://interface.gateway.uniswap.org/v2/'}
                 tokenList={'https://ipfs.io/ipns/tokens.uniswap.org'}
                 onError={console.error}
             />
