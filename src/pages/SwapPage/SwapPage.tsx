@@ -1,13 +1,6 @@
 import {FC, useEffect, useState} from "react";
 import {DynamicWidget, useDynamicContext} from "@dynamic-labs/sdk-react-core";
-import { SwapWidget } from '@uniswap/widgets';
-import '@uniswap/widgets/fonts.css'
-
-import {base} from 'viem/chains';
-
-const jsonRpcMap = {
-        [base.id]: base.rpcUrls.default.http,
-};
+import { Widget } from "@kyberswap/widgets";
 
 export const SwapPage: FC = () => {
     const { primaryWallet, network, sdkHasLoaded } = useDynamicContext();
@@ -31,13 +24,12 @@ export const SwapPage: FC = () => {
         <div>
             <DynamicWidget/>
             <div>View balance</div>
-            <SwapWidget
-                brandedFooter={false}
+            <Widget
+                client="dynaswap"
+                enableRoute={true}
+                enableDexes="kyberswap-elastic,uniswapv3,uniswap"
                 provider={provider}
-                jsonRpcUrlMap={jsonRpcMap}
-                routerUrl={'https://interface.gateway.uniswap.org/v2/'}
-                tokenList={'https://ipfs.io/ipns/tokens.uniswap.org'}
-                onError={console.error}
+                title={<div>Dynaswap</div>}
             />
         </div>
     );
