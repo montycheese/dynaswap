@@ -35,6 +35,7 @@ export const SwapPage: FC = () => {
                 provider={provider}
                 jsonRpcUrlMap={jsonRpcMap}
                 tokenList={'https://ipfs.io/ipns/tokens.uniswap.org'}
+                onError={console.error}
             />
         </div>
     );
