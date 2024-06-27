@@ -29,15 +29,16 @@ import {
 } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http } from 'viem';
-import { sepolia } from 'viem/chains';
+import { base } from 'viem/chains';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { EthersExtension } from "@dynamic-labs/ethers-v5";
 
 const config = createConfig({
-  chains: [sepolia],
+  chains: [base],
   multiInjectedProviderDiscovery: false,
   transports: {
-    [sepolia.id]: http(),
+    [base.id]: http(),
   },
 });
 
@@ -84,6 +85,7 @@ export const App: FC = () => {
             apiBaseUrl,
             environmentId: dynEnv as string,
             walletConnectors: [EthereumWalletConnectors],
+            walletConnectorExtensions: [EthersExtension],
           }}
       >
         <WagmiProvider config={config}>
