@@ -32,7 +32,6 @@ import { http } from 'viem';
 import { sepolia } from 'viem/chains';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
-import { ZeroDevSmartWalletConnectors } from '@dynamic-labs/ethereum-aa';
 
 const config = createConfig({
   chains: [sepolia],
@@ -84,7 +83,7 @@ export const App: FC = () => {
           settings={{
             apiBaseUrl,
             environmentId: dynEnv as string,
-            walletConnectors: [EthereumWalletConnectors, ZeroDevSmartWalletConnectors],
+            walletConnectors: [EthereumWalletConnectors],
           }}
       >
         <WagmiProvider config={config}>
