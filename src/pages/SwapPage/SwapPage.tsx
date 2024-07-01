@@ -37,10 +37,14 @@ export const SwapPage: FC = () => {
     }
 
     return (
-        <div>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+        }}>
             <div style={{
-                width: '200px',
-                marginBottom: '12px'
+                width: '180px',
+                marginBottom: '12px',
             }}>
                 <DynamicWidget/>
             </div>
