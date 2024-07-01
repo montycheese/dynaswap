@@ -19,7 +19,7 @@ const theme = {
     fontFamily: 'Work Sans',
 }
 export const SwapPage: FC = () => {
-    const { primaryWallet, network, sdkHasLoaded } = useDynamicContext();
+    const { primaryWallet, network, sdkHasLoaded, setShowDynamicUserProfile } = useDynamicContext();
     const [provider, setProvider] = useState(null);
 
     useEffect(() => {
@@ -38,15 +38,31 @@ export const SwapPage: FC = () => {
 
     return (
         <div>
-            <DynamicWidget/>
-            <div>View balance</div>
+            <div style={{
+                width: '200px',
+                marginBottom: '12px'
+            }}>
+                <DynamicWidget/>
+            </div>
+            <div style={{
+                background: 'white',
+                padding: '0.25rem',
+                color: 'black',
+                borderRadius: '5px',
+                width: '100px',
+                marginTop: '12px',
+                marginBottom: '12px'
+            }}
+                 onClick={() => setShowDynamicUserProfile(true)}>View balances</div>
             <Widget
                 client="dynaswap"
                 enableRoute={true}
                 enableDexes="kyberswap-elastic,uniswapv3,uniswap"
+                defaultTokenOut="0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"
                 provider={provider}
                 title={<div>Dynaswap</div>}
                 theme={theme}
+                width={350}
             />
         </div>
     );

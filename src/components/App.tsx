@@ -50,6 +50,7 @@ export const App: FC = () => {
   const themeParams = useThemeParams();
   const viewport = useViewport();
 
+
   useEffect(() => {
     return bindMiniAppCSSVars(miniApp, themeParams);
   }, [miniApp, themeParams]);
@@ -86,7 +87,12 @@ export const App: FC = () => {
             environmentId: dynEnv as string,
             walletConnectors: [EthereumWalletConnectors],
             walletConnectorExtensions: [EthersExtension],
-          }}
+          events: {
+            onAuthSuccess: (args) => {
+              window.location.hash = '#fund-wallet'
+            }
+          }
+        }}
       >
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
